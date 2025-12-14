@@ -3428,3 +3428,222 @@ a:hover {
     bottom: 80px;
   }
 }
+
+/* ===== URGENCY BANNER ===== */
+.urgency-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #dc2626, #ea580c);
+  z-index: 10001;
+  padding: 10px 20px;
+  transform: translateY(-100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.urgency-banner.visible {
+  transform: translateY(0);
+}
+
+.urgency-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.urgency-pulse {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  animation: urgency-pulse 1.5s infinite;
+}
+
+@keyframes urgency-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+.urgency-text {
+  font-size: 0.9rem;
+  color: white;
+  text-align: center;
+}
+
+.urgency-text strong {
+  font-weight: 700;
+}
+
+.urgency-text a {
+  color: white;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.urgency-text a:hover {
+  text-decoration: none;
+}
+
+.urgency-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.urgency-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.urgency-close svg {
+  width: 14px;
+  height: 14px;
+  stroke: white;
+}
+
+/* Adjust navbar when banner is visible */
+body.urgency-active .navbar {
+  top: 42px;
+}
+
+/* ===== QUOTE CALCULATOR ===== */
+.quote-calculator {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.quote-calculator h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.quote-calculator h4 svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-primary);
+}
+
+.calc-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.calc-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calc-group label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.calc-group select,
+.calc-group input {
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+}
+
+.calc-group select:focus,
+.calc-group input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.calc-result {
+  display: none;
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: linear-gradient(135deg, rgba(235, 90, 40, 0.15), rgba(235, 90, 40, 0.05));
+  border: 1px solid rgba(235, 90, 40, 0.3);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.calc-result.visible {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.calc-result-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.calc-result-price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.calc-result-note {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+}
+
+.calc-btn {
+  width: 100%;
+  margin-top: var(--spacing-sm);
+  padding: 12px;
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.calc-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+@media (max-width: 640px) {
+  .calc-row {
+    grid-template-columns: 1fr;
+  }
+
+  .urgency-text {
+    font-size: 0.8rem;
+  }
+}

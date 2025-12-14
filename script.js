@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCookieBanner();
   initFAQ();
   initExitIntent();
+  initUrgencyBanner();
+  initQuoteCalculator();
   loadPlaceholderImages();
 });
 
@@ -670,6 +672,83 @@ function initExitIntent() {
   // Close on escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closePopup();
+  });
+}
+
+/**
+ * Urgency banner functionality
+ */
+function initUrgencyBanner() {
+  const banner = document.getElementById('urgencyBanner');
+  const closeBtn = document.getElementById('urgencyClose');
+
+  if (!banner) return;
+
+  // Check if already dismissed
+  if (sessionStorage.getItem('krode-urgency-dismissed')) return;
+
+  // Show banner after 3 seconds
+  setTimeout(() => {
+    banner.classList.add('visible');
+    document.body.classList.add('urgency-active');
+  }, 3000);
+
+  // Close banner
+  closeBtn?.addEventListener('click', () => {
+    banner.classList.remove('visible');
+    document.body.classList.remove('urgency-active');
+    sessionStorage.setItem('krode-urgency-dismissed', 'true');
+  });
+}
+
+/**
+ * Quote calculator functionality
+ */
+function initQuoteCalculator() {
+  const calcBtn = document.getElementById('calcBtn');
+  const calcResult = document.getElementById('calcResult');
+  const calcPrice = document.getElementById('calcPrice');
+
+  if (!calcBtn) return;
+
+  // Base prices per door type (per m²)
+  const basePrices = {
+    seccional: 150,
+    rapida: 280,
+    tallafocs: 350,
+    enrotllable: 120
+  };
+
+  calcBtn.addEventListener('click', () => {
+    const type = document.getElementById('calcType').value;
+    const width = parseFloat(document.getElementById('calcWidth').value);
+    const height = parseFloat(document.getElementById('calcHeight').value);
+    const motor = document.getElementById('calcMotor').value;
+
+    // Validation
+    if (!type || !width || !height) {
+      alert('Si us plau, omple tots els camps.');
+      return;
+    }
+
+    // Calculate price
+    const area = width * height;
+    let price = basePrices[type] * area;
+
+    // Add motorization cost
+    if (motor === 'si') {
+      price += 450 + (width > 4 ? 150 : 0);
+    }
+
+    // Add installation cost (20%)
+    price *= 1.2;
+
+    // Round to nearest 100
+    price = Math.round(price / 100) * 100;
+
+    // Show result
+    calcPrice.textContent = `${price.toLocaleString('es-ES')}€ - ${(price * 1.15).toLocaleString('es-ES')}€`;
+    calcResult.classList.add('visible');
   });
 }
 
