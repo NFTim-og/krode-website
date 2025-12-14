@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initCookieBanner();
   initFAQ();
+  initExitIntent();
   loadPlaceholderImages();
 });
 
@@ -632,6 +633,43 @@ function initFAQ() {
       // Toggle current item
       item.classList.toggle('active');
     });
+  });
+}
+
+/**
+ * Exit intent popup functionality
+ */
+function initExitIntent() {
+  const popup = document.getElementById('exitPopup');
+  const closeBtn = document.getElementById('exitPopupClose');
+  const ctaBtn = document.getElementById('exitPopupCTA');
+  const overlay = popup?.querySelector('.exit-popup-overlay');
+
+  if (!popup) return;
+
+  // Check if already shown
+  if (sessionStorage.getItem('krode-exit-shown')) return;
+
+  // Show popup on exit intent (mouse leaves viewport)
+  document.addEventListener('mouseout', (e) => {
+    if (e.clientY < 50 && !sessionStorage.getItem('krode-exit-shown')) {
+      popup.classList.add('visible');
+      sessionStorage.setItem('krode-exit-shown', 'true');
+    }
+  });
+
+  // Close popup
+  const closePopup = () => {
+    popup.classList.remove('visible');
+  };
+
+  closeBtn?.addEventListener('click', closePopup);
+  overlay?.addEventListener('click', closePopup);
+  ctaBtn?.addEventListener('click', closePopup);
+
+  // Close on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePopup();
   });
 }
 

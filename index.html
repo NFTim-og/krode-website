@@ -20,6 +20,52 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/logo.png">
 
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="KRODE - Portes Seccionals i Solucions Industrials">
+  <meta property="og:description"
+    content="Més de 30 anys fabricant portes seccionals, portes ràpides, portes tallafocs i molls de càrrega. Sol·licita pressupost gratuït!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://krode.com">
+  <meta property="og:image" content="https://krode.com/images/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KRODE - Portes Seccionals">
+  <meta name="twitter:description" content="30+ anys d'experiència en solucions d'accés industrial">
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "KRODE S.A.",
+    "image": "https://krode.com/images/logo.png",
+    "description": "Fabricació, venda i instal·lació de portes seccionals, portes ràpides, portes tallafocs i molls de càrrega",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Carrer Compositor Pep Ventura, 58",
+      "addressLocality": "Olot",
+      "addressRegion": "Girona",
+      "postalCode": "17800",
+      "addressCountry": "ES"
+    },
+    "telephone": "+34972271713",
+    "email": "info@krode.com",
+    "url": "https://krode.com",
+    "openingHours": "Mo-Fr 07:45-17:00",
+    "priceRange": "€€€",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "50"
+    },
+    "sameAs": [
+      "https://www.instagram.com/krode_sa/",
+      "https://www.linkedin.com/company/krode-sa/"
+    ]
+  }
+  </script>
+
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -1472,6 +1518,64 @@
         <button class="cookie-btn cookie-decline" id="cookieDecline">Rebutjar</button>
       </div>
     </div>
+  </div>
+
+  <!-- Exit Intent Popup -->
+  <div class="exit-popup" id="exitPopup">
+    <div class="exit-popup-overlay"></div>
+    <div class="exit-popup-content">
+      <button class="exit-popup-close" id="exitPopupClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="exit-popup-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h3>Espera! 🚪</h3>
+      <p>Abans de marxar, demana el teu <strong>pressupost gratuït</strong> i sense compromís!</p>
+      <div class="exit-popup-benefits">
+        <span>✓ Resposta en 24h</span>
+        <span>✓ Sense compromís</span>
+        <span>✓ Assessorament expert</span>
+      </div>
+      <div class="exit-popup-buttons">
+        <a href="#contact" class="btn btn-primary exit-popup-cta" id="exitPopupCTA">Sol·licitar Pressupost</a>
+        <a href="tel:+34972271713" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+            </path>
+          </svg>
+          Trucar Ara
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile CTA Bar (Sticky) -->
+  <div class="mobile-cta-bar" id="mobileCTA">
+    <a href="tel:+34972271713" class="mobile-cta-btn call">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path
+          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+        </path>
+      </svg>
+      Trucar
+    </a>
+    <a href="#contact" class="mobile-cta-btn quote">
+      Pressupost Gratuït
+    </a>
+    <a href="https://wa.me/34972271713" target="_blank" class="mobile-cta-btn whatsapp">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+      </svg>
+      WhatsApp
+    </a>
   </div>
 
   <!-- JavaScript -->

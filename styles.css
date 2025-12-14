@@ -3211,3 +3211,220 @@ a:hover {
     bottom: 90px;
   }
 }
+
+/* ===== EXIT INTENT POPUP ===== */
+.exit-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.exit-popup.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.exit-popup-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.exit-popup-content {
+  position: relative;
+  background: var(--color-bg-dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.exit-popup.visible .exit-popup-content {
+  transform: scale(1) translateY(0);
+}
+
+.exit-popup-close {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.exit-popup-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.exit-popup-close svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-text-muted);
+}
+
+.exit-popup-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto var(--spacing-md);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse-icon 2s infinite;
+}
+
+@keyframes pulse-icon {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(235, 90, 40, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 15px rgba(235, 90, 40, 0);
+  }
+}
+
+.exit-popup-icon svg {
+  width: 36px;
+  height: 36px;
+  stroke: white;
+}
+
+.exit-popup-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.exit-popup-content>p {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.exit-popup-benefits {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.exit-popup-benefits span {
+  font-size: 0.85rem;
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.exit-popup-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.exit-popup-cta {
+  font-size: 1.1rem;
+  padding: 16px 32px;
+}
+
+/* ===== MOBILE CTA BAR ===== */
+.mobile-cta-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-bg-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--spacing-sm);
+  z-index: 9999;
+  gap: var(--spacing-xs);
+}
+
+.mobile-cta-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.mobile-cta-btn.call {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.mobile-cta-btn.call svg {
+  width: 18px;
+  height: 18px;
+}
+
+.mobile-cta-btn.quote {
+  background: var(--gradient-primary);
+  color: white;
+  flex: 1.5;
+}
+
+.mobile-cta-btn.whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+.mobile-cta-btn.whatsapp svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 768px) {
+  .mobile-cta-bar {
+    display: flex;
+  }
+
+  /* Adjust other elements for mobile CTA bar */
+  .cookie-banner {
+    bottom: 70px;
+  }
+
+  .whatsapp-float {
+    bottom: 150px;
+  }
+
+  .back-to-top {
+    bottom: 80px;
+  }
+}
